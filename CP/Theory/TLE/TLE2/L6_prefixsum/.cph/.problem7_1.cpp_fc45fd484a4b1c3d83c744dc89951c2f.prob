@@ -1,0 +1,1 @@
+{"name":"Local: problem7_1","url":"/data/Codeforces_Cp/Theory/TLE/TLE2/L6_prefixsum/problem7_1.cpp","tests":[{"id":1733199342727,"input":"1\n6 7 8 9 10\n9\n2 5","output":"45"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/data/Codeforces_Cp/Theory/TLE/TLE2/L6_prefixsum/problem7_1.cpp","group":"local","local":true}
