@@ -22,45 +22,50 @@ template <class T> void _print(vector <T> v);
 template <class T> void _print(set <T> v);
 template <class T, class V> void _print(map <T, V> v);
 template <class T> void _print(multiset <T> v);
-template <class T, class V> void _print(pair <T, V> p) {cerr << "{"; _print(p.first); cerr << ","; _print(p.second); cerr << "}";}
+template <class T, class V> void _print(pair <T, V> p) {cerr << "{"; _print(p.ff); cerr << ","; _print(p.ss); cerr << "}";}
 template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(multimap <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-void solve() {
+void solve()
+{
     int n;
-    cin >> n;
-    string s, t;
-    cin >> s >> t;
-    int cnt = 0,cnt1=0;
-    for (int i = 0; i < n; i++) {
-        if (i&1) {
-            cnt+=s[i] == '0';
-            cnt1+=t[i] == '0';
-        } else {
-            cnt+=t[i] == '0';
-            cnt1+=s[i] == '0';
+    cin>>n;
+    if ((n & (n-1)) == 0){
+        cout<<-1;
+        return;
+    }
+    else if (((n+1) & n) == 0){
+        cout<<-1;
+        return;
+    }
+ 
+    int size = 32 - __builtin_clz(n);
+    bitset<32> bits(n);
+    bits[size -1] = 0;
+    for(int i = size-2; i >= 0; i--){
+        if (bits[i] == 0){
+            bits[i] = 1;
+            break;
         }
     }
-    if(cnt1>=(n+1)/2 && cnt>=n/2) {
-        cout << "YES\n";
-    } else {
-        cout << "NO\n";
-    }
-
-   
+ 
+    cout<<bits.to_ullong();
+ 
 }
-
+ 
 signed main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    int t;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int t = 1;
     cin >> t;
-    while(t--) {
+    while (t--)
+    {
         solve();
+        cout << endl;
     }
     return 0;
 }
